@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="log.pattern">%d [%t] %-5level %c - %msg%n</Property>
+        <Property name="file.pattern">%d{ABSOLUTE} %-5level %c{1}:%L - %msg%n</Property>
+        <Property name="LOG_DIR">${sys:user.dir}/target/logs</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${log.pattern}"/>
+        </Console>
+
+        <!-- Rolling File Appender -->
+        <RollingFile name="File"
+                     fileName="${LOG_DIR}/automation.log"
+                     filePattern="${sys:app.root}/target/Log-%i.txt">
+            <PatternLayout pattern="${file.pattern}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1000MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="default-suite" verbose="1">
+	<listeners>
+		<listener class-name="core.helpers.listeners.ExtentTestNGListener" />
+		<listener class-name="core.helpers.listeners.SuiteListener" />
+		<listener class-name="test.runners.RetryListener" />
+		<listener class-name="test.runners.ReRunAtEndListener" />
+	</listeners>
+	<test name="default-test">
+		<!--<classes> <class name="test.Runners.TestRunner" /> </classes> -->
+		<packages>
+			<package name="tests.demoQA"></package>
+		</packages>
+	</test>
+</suite>

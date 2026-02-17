@@ -1,0 +1,13 @@
+{
+  "theme": "standard",
+  "encoding": "utf-8",
+  "protocol": "https",
+  "timelineEnabled": true,
+  "offlineMode": false,
+  "thumbnailForBase64": false,
+  "scripts": [],
+  "stylesheets": [],
+  "js": "",
+  "css": "",
+  "timeStampFormat": "EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'"
+}

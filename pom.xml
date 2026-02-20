@@ -6,6 +6,11 @@
 	<artifactId>Demo.Seleneium.TestNG</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>DemoSeleneiumTestNG</name>
+	<properties>
+	    <maven.compiler.source>24</maven.compiler.source>
+	    <maven.compiler.target>24</maven.compiler.target>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
@@ -53,7 +58,7 @@
 				<version>3.2.5</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFle>testng.xml</suiteXmlFle>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<systemPropertyVariables>
 						<log4j.configurationFile>

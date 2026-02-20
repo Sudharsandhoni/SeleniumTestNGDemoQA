@@ -46,14 +46,6 @@ bin/
 .DS_Store
 Thumbs.db
 
-############################################
-# Selenium specific
-############################################
-
-# Drivers (optional - ignore if dynamically downloaded)
-*.drivers/
-*.exe
-*.dll
 
 ############################################
 # Temporary files

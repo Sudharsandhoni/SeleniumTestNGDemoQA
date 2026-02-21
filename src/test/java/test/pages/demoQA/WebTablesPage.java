@@ -30,8 +30,8 @@ public class WebTablesPage extends BasePage {
 	private By form_submitBtn = By.id("submit");
 	private By searchBox = By.id("searchBox");
 	private By headerNames = By.xpath("//div[contains(@class, 'header-content')]");
-	private By tableRows = By.xpath("//div[@role= 'row']");
-	private By columnDatas = By.xpath("//div[@class='rt-td']");
+	private By tableRows = By.xpath("//tbody//tr"); //div[@role= 'row']
+	private By columnDatas = By.xpath("//td"); //div[@class='rt-td']
 
 	public WebTablesPage(SeleniumUtils browser) {
 		super(browser);
@@ -67,6 +67,7 @@ public class WebTablesPage extends BasePage {
 	}
 
 	public void searchData(String data) throws CustomException, CustomTimeoutException {
+		browser.click(searchBox);
 		browser.type(searchBox, data);
 	}
 

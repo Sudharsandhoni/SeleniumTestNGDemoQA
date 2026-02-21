@@ -2,6 +2,7 @@ package core.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class MouseActions {
@@ -18,7 +19,9 @@ public class MouseActions {
 	}
 	
 	public void doubleClick(By locator) {
-		pointer.doubleClick(browser.find(locator)).build().perform();;
+		WebElement element = browser.find(locator);
+		//LogUtils.logInfo(element.getLocation().toString());
+		pointer.doubleClick(element).build().perform();;
 	}
 	
 	public void rightClick(By locator) {

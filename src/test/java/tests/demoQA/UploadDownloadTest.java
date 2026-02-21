@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 
 import core.annotations.EnableDownload;
 import core.helper.download.DownloadUtils;
+import test.pages.demoQA.HomePage;
+import test.pages.demoQA.RadioButtonPage;
 import test.pages.demoQA.UploadAndDownloadPage;
 import tests.BaseTest;
 
@@ -17,8 +19,15 @@ public class UploadDownloadTest extends BaseTest {
 	@EnableDownload
 	@Test
 	public void downloadTest() {
+		HomePage homePage = new HomePage(browser);
+		testReporter.step("Launch HomePage", homePage::launch);
+		testReporter.step("Click Elements Card", homePage::clickElementsCard);
+		testReporter.step("Click upload-download Text/Link", homePage::clickUploadAndDownloadText);
+
 		UploadAndDownloadPage uploadAndDownloadPage = new UploadAndDownloadPage(browser);
-		testReporter.step("Launch Browser with upload-download url", uploadAndDownloadPage::launch);
+		uploadAndDownloadPage.waitForPageToLoad();
+
+		//testReporter.step("Launch Browser with upload-download url", uploadAndDownloadPage::launch);
 		testReporter.step("Click Download Button", uploadAndDownloadPage::clickDownloadButton);
 		File file = testReporter.step("Wait For Download", () -> {
 			return new DownloadUtils().waitForDownload(getDownloadPath(), "sampleFile.jpeg", 15);
@@ -31,8 +40,15 @@ public class UploadDownloadTest extends BaseTest {
 	@Test(dependsOnMethods = "downloadTest")
 	public void uploadTest() {
 
+		HomePage homePage = new HomePage(browser);
+		testReporter.step("Launch HomePage", homePage::launch);
+		testReporter.step("Click Elements Card", homePage::clickElementsCard);
+		testReporter.step("Click upload-download Text/Link", homePage::clickUploadAndDownloadText);
+
 		UploadAndDownloadPage uploadAndDownloadPage = new UploadAndDownloadPage(browser);
-		testReporter.step("Launch Browser with upload-download url", uploadAndDownloadPage::launch);
+		uploadAndDownloadPage.waitForPageToLoad();
+
+		//testReporter.step("Launch Browser with upload-download url", uploadAndDownloadPage::launch);
 		String uploadFileName = "sampleFile.jpeg";
 		String filePath = Paths.get(getDownloadPath(), uploadFileName).toAbsolutePath().toString();
 		testReporter.step("Upload file -> "+ filePath, () -> {			

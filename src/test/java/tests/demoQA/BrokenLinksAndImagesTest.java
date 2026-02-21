@@ -10,15 +10,22 @@ import core.constants.TestGlobals;
 import core.utils.ImageValidator;
 import core.utils.LinkValidator;
 import test.pages.demoQA.BrokenLinkAndImagesPage;
+import test.pages.demoQA.CheckBoxPage;
+import test.pages.demoQA.HomePage;
 import tests.BaseTest;
 
 public class BrokenLinksAndImagesTest extends BaseTest {
 
 	@Test
 	public void validateNavigableLinks() {
+		HomePage homePage = new HomePage(browser);
+		testReporter.step("Launch HomePage", homePage::launch);
+		testReporter.step("Click Elements Card", homePage::clickElementsCard);
+		testReporter.step("Click Broken Links And Images Text/Link", homePage::clickBrokenLinksImagesText);
 		BrokenLinkAndImagesPage brokenLinkAndImagesPage = new BrokenLinkAndImagesPage(browser);
+		brokenLinkAndImagesPage.waitForPageToLoad();
 
-		testReporter.step("Launch Broken Links And Images Page", brokenLinkAndImagesPage::launch);
+		//testReporter.step("Launch Broken Links And Images Page", brokenLinkAndImagesPage::launch);
 
 		List<WebElement> links = testReporter.step("Get All Links from Broken Links And Images Page",
 				brokenLinkAndImagesPage::getAllLinks);
@@ -46,9 +53,14 @@ public class BrokenLinksAndImagesTest extends BaseTest {
 
 	@Test
 	public void validateValidHTMLLinks() {
+		HomePage homePage = new HomePage(browser);
+		testReporter.step("Launch HomePage", homePage::launch);
+		testReporter.step("Click Elements Card", homePage::clickElementsCard);
+		testReporter.step("Click Broken Links And Images Text/Link", homePage::clickBrokenLinksImagesText);
 		BrokenLinkAndImagesPage brokenLinkAndImagesPage = new BrokenLinkAndImagesPage(browser);
+		brokenLinkAndImagesPage.waitForPageToLoad();
 
-		testReporter.step("Launch Broken Links And Images Page", brokenLinkAndImagesPage::launch);
+		//testReporter.step("Launch Broken Links And Images Page", brokenLinkAndImagesPage::launch);
 
 		List<WebElement> links = testReporter.step("Get All Links from Broken Links And Images Page",
 				brokenLinkAndImagesPage::getAllLinks);
@@ -72,9 +84,14 @@ public class BrokenLinksAndImagesTest extends BaseTest {
 
 	@Test
 	public void validateImages() {
+		HomePage homePage = new HomePage(browser);
+		testReporter.step("Launch HomePage", homePage::launch);
+		testReporter.step("Click Elements Card", homePage::clickElementsCard);
+		testReporter.step("Click Broken Links And Images Text/Link", homePage::clickBrokenLinksImagesText);
 		BrokenLinkAndImagesPage brokenLinkAndImagesPage = new BrokenLinkAndImagesPage(browser);
+		brokenLinkAndImagesPage.waitForPageToLoad();
 
-		testReporter.step("Launch Broken Links And Images Page", brokenLinkAndImagesPage::launch);
+		//testReporter.step("Launch Broken Links And Images Page", brokenLinkAndImagesPage::launch);
 
 		List<WebElement> images = testReporter.step("Get All Images from Broken Links And Images Page",
 				brokenLinkAndImagesPage::getAllImages);
@@ -99,9 +116,16 @@ public class BrokenLinksAndImagesTest extends BaseTest {
 	
 	@Test
 	public void validateHTMLImages() {
+		HomePage homePage = new HomePage(browser);
+		testReporter.step("Launch HomePage", homePage::launch);
+		testReporter.step("Click Elements Card", homePage::clickElementsCard);
+		testReporter.step("Click Broken Links And Images Text/Link", homePage::clickBrokenLinksImagesText);
 		BrokenLinkAndImagesPage brokenLinkAndImagesPage = new BrokenLinkAndImagesPage(browser);
+		brokenLinkAndImagesPage.waitForPageToLoad();
+		
 
-		testReporter.step("Launch Broken Links And Images Page", brokenLinkAndImagesPage::launch);
+
+		//testReporter.step("Launch Broken Links And Images Page", brokenLinkAndImagesPage::launch);
 
 		List<WebElement> images = testReporter.step("Get All Images from Broken Links And Images Page",
 				brokenLinkAndImagesPage::getAllImages);

@@ -174,7 +174,9 @@ public class SeleniumUtils {
 		for (int attempts = 1; attempts <= retries; attempts++) {
 			try {
 				WebElement element = waitForVisibility(locator, waitTime);
+				//LogUtils.logInfo(element.getLocation().toString());
 				scrollIntoView(element);
+				//LogUtils.logInfo(element.getLocation().toString());
 				if (highlightElement) {
 					highlightElement(element);
 				}

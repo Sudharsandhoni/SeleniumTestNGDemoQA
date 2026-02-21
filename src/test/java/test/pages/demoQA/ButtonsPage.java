@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import core.exceptions.CustomException;
 import core.exceptions.CustomTimeoutException;
 import core.utils.ConfigReader;
+import core.utils.LogUtils;
 import core.utils.SeleniumUtils;
 import test.pages.BasePage;
 
@@ -30,7 +31,7 @@ public class ButtonsPage extends BasePage{
 	}
 
 	public void launch() throws CustomException {
-		browser.get(ConfigReader.getPropertyValue("BASE_URL_DEMO_QA") + "/buttons");
+		//browser.get(ConfigReader.getPropertyValue("BASE_URL_DEMO_QA") + "/buttons");
 		
 	}
 
@@ -39,6 +40,7 @@ public class ButtonsPage extends BasePage{
 	}
 
 	public void doubleClickButton() {
+		LogUtils.logInfo(browser.find(btnDoubleClick).getLocation().toString());		
 		getPointer().doubleClick(btnDoubleClick);
 	}
 

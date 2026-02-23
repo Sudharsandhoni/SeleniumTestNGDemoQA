@@ -151,6 +151,30 @@ public class SeleniumUtils {
 			throw new CustomTimeoutException("Element text is not changed within " + waitTime + "s: " + element + "\nOld Text -> "+ oldText + "\nNew Text -> " + element.getText(), e);
 		}
 	}
+	
+	
+	
+	public void waitForAttributeChanged(By locator, String attributeName, String attributeValueToBeContains, int waitTime) {
+		try {
+			if(waitTime == defaultTimeoutSeconds) {
+				defaultWait.until(ExpectedConditions.attributeContains(locator, attributeName.toLowerCase().trim(), attributeValueToBeContains));
+				return;
+			}
+			WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(waitTime));
+			wait.until(ExpectedConditions.attributeContains(locator, attributeName.toLowerCase().trim(), attributeValueToBeContains));
+		}
+		catch (TimeoutException e) {
+			throw new CustomTimeoutException("Element attribute value is not changed as expected within " + waitTime + "s: " 
+					+ locator.toString() + "\nAttribute name: "+attributeName 
+					+ "\nAttributeValue: " + attributeValueToBeContains
+					+ "\nCurrentAttributeValue" + getAttributeValue(locator, attributeName), e);
+		}
+		
+	}
+	
+	public void waitForAttributeChanged(By locator, String attributeName, String attributeValueToBeContains) {
+		waitForAttributeChanged(locator, attributeName, attributeValueToBeContains, defaultTimeoutSeconds);
+	}
 
 	public boolean isElementDisplayed(By locator) {
 		try {
@@ -353,6 +377,15 @@ public class SeleniumUtils {
 
 	public String getText(By locator) {
 		return getTextCustom(locator, RETRY_COUNT, HIGHLIGHT_ELEMENT, this.defaultTimeoutSeconds);
+	}
+	
+	public String getAttributeValue(By locator, String attributeName) {
+		WebElement element = find(locator);
+		return element.getAttribute(attributeName.trim());
+	}
+	
+	public String getAttributeValue(WebElement element, String attributeName) {
+		return element.getAttribute(attributeName.trim());
 	}
 
 	public String takeScreenshot(String action) throws CustomException {

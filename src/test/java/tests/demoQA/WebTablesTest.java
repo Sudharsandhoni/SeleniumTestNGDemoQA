@@ -16,7 +16,7 @@ import tests.data.demoQA.WebTableRegistrationFormData;
 
 public class WebTablesTest extends BaseTest {
 
-	@Test(enabled = false)// pages has issues after recent update
+	@Test
 	public void validateWebTable() throws CustomException, CustomTimeoutException {
 		HomePage homePage = new HomePage(browser);
 		testReporter.step("Launch HomePage", homePage::launch);

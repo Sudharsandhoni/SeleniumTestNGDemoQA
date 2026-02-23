@@ -20,12 +20,15 @@ public class MouseActions {
 	
 	public void doubleClick(By locator) {
 		WebElement element = browser.find(locator);
+		browser.waitForClickable(element);
 		//LogUtils.logInfo(element.getLocation().toString());
 		pointer.doubleClick(element).build().perform();;
 	}
 	
 	public void rightClick(By locator) {
-		pointer.contextClick(browser.find(locator)).build().perform();
+		WebElement element = browser.find(locator);
+		browser.waitForClickable(element);
+		pointer.contextClick(element).build().perform();
 	}
 	
 	

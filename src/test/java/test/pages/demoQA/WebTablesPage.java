@@ -29,7 +29,8 @@ public class WebTablesPage extends BasePage {
 	private By form_department = By.id("department");
 	private By form_submitBtn = By.id("submit");
 	private By searchBox = By.id("searchBox");
-	private By headerNames = By.xpath("//div[contains(@class, 'header-content')]");
+	//private By headerNames = By.xpath("//div[contains(@class, 'header-content')]");
+	private By headerNames = By.xpath("//thead//tr//th");
 	private By tableRows = By.xpath("//tbody//tr"); //div[@role= 'row']
 	private By columnDatas = By.xpath("//td"); //div[@class='rt-td']
 
@@ -82,7 +83,7 @@ public class WebTablesPage extends BasePage {
 			headerMap.put(header.getText().trim().toLowerCase().replaceAll("\\s+", ""), index);
 			index++;
 		}
-		for (int row = 1; row < webTableRows.size(); row++) {
+		for (int row = 0; row < webTableRows.size(); row++) {
 			List<WebElement> webColumnDatas = webTableRows.get(row).findElements(columnDatas);
 			if(webColumnDatas.get(0).getText().trim() == "") {
 				return tableData;
